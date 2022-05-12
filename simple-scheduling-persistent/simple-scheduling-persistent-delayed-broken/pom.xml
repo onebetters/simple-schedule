@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>simple-scheduling-persistent</artifactId>
+        <groupId>com.qianmi.b2b</groupId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>simple-scheduling-persistent-delayed-broken</artifactId>
+
+    <description>
+        通用存储实现，实现目标：
+        配合persistent实现层（比如mongodb、jdbc等），实现对内存任务队列的短路、桥接，主要是为了内存队列大小的均衡考量。
+        如：
+        内存队列只存储最近N时间段内（比如最近1小时内）的任务，超出时间范围的，只存储在比如(数据库等)磁盘里。
+        配合定时任务器，将超过N时间范围的后续任务，定时提交到内存队列里。
+    </description>
+</project>

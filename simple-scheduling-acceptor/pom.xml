@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>simple-scheduling</artifactId>
+        <groupId>com.qianmi.b2b</groupId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>simple-scheduling-acceptor</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>simple-scheduling-acceptor-support</module>
+        <module>simple-scheduling-acceptor-activemq</module>
+        <module>simple-scheduling-acceptor-rest</module>
+    </modules>
+
+    <description>
+        任务受理入口，比如任务的提交、取消等一系列操作。
+        可以实现比如：
+        1、被动任务接收，如http、jms、rpc接口调用等；
+        2、主动任务接收，比如主动定时扫公共任务表；
+    </description>
+</project>

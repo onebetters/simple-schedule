@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>simple-scheduling-persistent</artifactId>
+        <groupId>com.qianmi.b2b</groupId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>simple-scheduling-persistent-mongodb</artifactId>
+
+    <description>
+        mongodb存储任务数据实现。
+        java客户端使用的是4.x版本，目前测试应该是也可以用在2.x、3.x版本的mongodb服务端。
+        如果未来因为这个导致支持不了了，可以再扩展哈(加模块或在该模块上扩展)
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.qianmi.b2b</groupId>
+            <artifactId>simple-scheduling-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>${mongodb-driver.version}</version>
+        </dependency>
+    </dependencies>
+</project>

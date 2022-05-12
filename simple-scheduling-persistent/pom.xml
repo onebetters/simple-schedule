@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>simple-scheduling</artifactId>
+        <groupId>com.qianmi.b2b</groupId>
+        <version>1.0.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>simple-scheduling-persistent</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        任务持久化支撑模型，主要提供了任务的主存储服务。
+        可以将任务存储在时序数据库、关系型数据库、文档型数据库、key-value型数据库、内存网格(IMDG，如果你胆子够大的话)等等。。。
+
+        备注：任务队列主要存储在该模型 + 内存里。
+        大部分场景是用于：当应用重启恢复时，数据加载到内存队列。
+        当然了，还有定制更多高级的玩法，比如：
+        1、内存队列只存储最近N时间内的任务，配合定时器，将后续任务提交到内存。
+        2、多级存储模型（很鸡肋，比如内存网格共享数据+数据库磁盘存储）
+    </description>
+
+    <modules>
+        <module>simple-scheduling-persistent-mongodb</module>
+        <module>simple-scheduling-persistent-jdbc</module>
+        <module>simple-scheduling-persistent-delayed-broken</module>
+    </modules>
+
+
+</project>
