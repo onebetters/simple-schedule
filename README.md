@@ -16,7 +16,7 @@
 
 消息类型：queue或topic即可
 
-消息队列：simple_scheduling
+消息队列：simple_scheduling_submit
 
 ```json
 {
