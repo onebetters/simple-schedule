@@ -48,12 +48,17 @@ public class DelayedBrokenTaskQueue extends DefaultTaskQueue {
     private void initTimer() {
         final ThreadFactory threadFactory = prefix(DelayedBrokenTaskQueue.class.getSimpleName(), true);
         final ScheduledExecutorService executor = newSingleThreadScheduledExecutor(threadFactory);
+        // 创建一个给定初始延迟的间隔性的任务，之后的每次任务执行时间为 初始延迟 + N * delay(间隔)。
+        // 这里的N为首次任务执行之后的第N个任务，N从1开始，意识就是 首次执行任务的时间为12:00，
+        // 那么下次任务的执行时间是固定的 是12:01 下下次为12:02。与scheduleWithFixedDelay 最大的区别就是，
+        // scheduleAtFixedRate 不受任务执行时间的影响。
         executor.scheduleAtFixedRate(() -> {
             final long from = 0 == lastLoadTimeMs.get() ? System.currentTimeMillis() : lastLoadTimeMs.get();
             final long to = from + keepInMemoryDelayMs;
             final Range<Long> range = Range.between(from, true, to, false);
             this.loadDatabaseTasksToMemory(range);
         }, 1000, keepInMemoryDelayMs, TimeUnit.MILLISECONDS);
+        // 停服务的时候需要把这个定时任务给停了，达到优雅停机的目的。
         Runtime.getRuntime().addShutdownHook(new Thread(executor::shutdown));
     }
 

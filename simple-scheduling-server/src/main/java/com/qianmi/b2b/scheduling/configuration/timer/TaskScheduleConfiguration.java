@@ -134,14 +134,14 @@ public class TaskScheduleConfiguration {
     }
 
     @Bean
-    ActiveMqCanceller activeMqCanceller(
+    ActiveMqCancelAcceptor activeMqCanceller(
             final TaskRepository taskRepository, final TaskScheduleSelector taskScheduleSelector) {
-        return new ActiveMqCanceller(taskRepository, taskScheduleSelector);
+        return new ActiveMqCancelAcceptor(taskRepository, taskScheduleSelector);
     }
 
     @Bean
-    ActiveMqReset activeMqReset(final TaskRepository taskRepository, final TaskScheduleSelector taskScheduleSelector) {
-        return new ActiveMqReset(taskRepository, taskScheduleSelector);
+    ActiveMqResetAcceptor activeMqReset(final TaskRepository taskRepository, final TaskScheduleSelector taskScheduleSelector) {
+        return new ActiveMqResetAcceptor(taskRepository, taskScheduleSelector);
     }
 
     @Bean
@@ -152,7 +152,7 @@ public class TaskScheduleConfiguration {
     }
 
     @Bean
-    ActiveMqAcceptor activeMqAcceptor(final List<ActiveMqTaskRequestHandler<? extends TaskRequest>> activeMqTaskRequestHandlers) {
-        return new ActiveMqAcceptor(activeMqTaskRequestHandlers);
+    ActiveMqAllOptAcceptor activeMqAcceptor(final List<ActiveMqTaskRequestHandler<? extends TaskRequest>> activeMqTaskRequestHandlers) {
+        return new ActiveMqAllOptAcceptor(activeMqTaskRequestHandlers);
     }
 }

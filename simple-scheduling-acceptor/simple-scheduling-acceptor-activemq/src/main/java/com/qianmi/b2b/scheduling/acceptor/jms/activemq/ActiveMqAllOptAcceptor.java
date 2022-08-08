@@ -22,10 +22,10 @@ import java.util.stream.Collectors;
  * @version 0.1.0
  */
 @Slf4j
-public class ActiveMqAcceptor {
+public class ActiveMqAllOptAcceptor {
     private final Map<TaskAcceptType, ActiveMqTaskRequestHandler<? extends TaskRequest>> handlerMap;
 
-    public ActiveMqAcceptor(List<ActiveMqTaskRequestHandler<? extends TaskRequest>> handlers) {
+    public ActiveMqAllOptAcceptor(List<ActiveMqTaskRequestHandler<? extends TaskRequest>> handlers) {
         this.handlerMap = handlers.stream().collect(Collectors.toMap(ActiveMqTaskRequestHandler::acceptType, h -> h));
     }
 
